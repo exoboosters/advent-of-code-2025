@@ -29,15 +29,10 @@ Do idx = 1 to cmds.0
          exit                                                           
       End                                                               
    End                                                                  
-   /* If movement of dial is greater than 99, reduce 100 to get value*/ 
-   If currPoint > 99 Then                                               
-      currPoint = currPoint - 100                                       
-   /* If movement of dial is lesser than 0, add 100 to get value     */
-   If currPoint < 0 Then                                               
-      currPoint = currPoint + 100                                      
-   /* If point is at 0, increase the password count                  */
-   If currPoint = 0 Then                                               
-      pass = pass + 1                                                  
+    /* Attempt 2 - Do a Mod 100 & check instead of currPoint          */ 
+    /*             manipulation. The hundreds place doesn't matter.   */ 
+    If currPoint // 100 = 0 Then                                         
+       pass = pass + 1                                                   
 End                                                                    
 Say 'Drumroll! Password is' pass                                       
 Exit                                                                   
